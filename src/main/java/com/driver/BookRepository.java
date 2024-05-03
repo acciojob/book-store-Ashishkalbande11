@@ -5,11 +5,11 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class BookRepository {
-    HashMap<Integer, Book> bookRepo = new HashMap<>();
-    int bookId = 2;
+    HashMap<Integer, Book> bookRepo;
+    int bookId;
     public BookRepository(){
-        save(new Book(1,"Yoga", "Genre1", "Author2"));
-        save(new Book(2, "Physics", "Genre1","Author1"));
+        this.bookRepo = new HashMap<>();
+        this.bookId = 1;
 
     }
 
