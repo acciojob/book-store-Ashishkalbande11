@@ -10,9 +10,15 @@ public class Book {
      
      private String author;
 
-//     public Book(){
-//
-//     }
+     public Book(){
+
+     }
+
+     public Book(String genre, String author, String name) {
+          this.genre = genre;
+          this.author = author;
+          this.name = name;
+     }
 
      public Book(int id, String name, String genre, String author) {
           this.id = id;
