@@ -5,16 +5,13 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class BookRepository {
-    HashMap<Integer, Book> bookRepo;
-    int bookId;
-    public BookRepository(){
-        this.bookRepo = new HashMap<>();
-        this.bookId = 1;
+    HashMap<Integer, Book> bookRepo = new HashMap<>();
 
+    public BookRepository(){
     }
 
     public Book save(Book book){
-        book.setId(bookId++);
+        book.setId(bookRepo.size()+1);
         bookRepo.put(book.getId(),book);
         return book;
     }
@@ -26,7 +23,12 @@ public class BookRepository {
     }
 
     public List<Book> findAll(){
-        return new ArrayList<>(bookRepo.values());
+        List<Book> bookList = new ArrayList<>();
+
+        for(Integer book : bookRepo.keySet()){
+            bookList.add(bookRepo.get(book));
+        }
+        return bookList;
     }
 
     public void deleteBookById(int id){
