@@ -21,37 +21,37 @@ public class BookController {
     }
 
     @GetMapping("/books/get-book-by-id/{id}")
-    public ResponseEntity<Book> findBookById(@PathVariable String id){
+    public ResponseEntity<Book> findBookById(@PathVariable("id") String id){
         Book findBook = bookService.findBookById(id);
-        return new ResponseEntity<>(findBook,HttpStatus.CREATED);
+        return new ResponseEntity<>(findBook,HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/books/delete-book-by-id/{id}")
-    public ResponseEntity<String> deleteBookById (@PathVariable String bookId){
+    public ResponseEntity<String> deleteBookById (@PathVariable("id") String bookId){
         bookService.deleteBookById(bookId);
-        return new ResponseEntity<>("Book with id "+bookId+" deleted successfully", HttpStatus.CREATED);
+        return new ResponseEntity<>("Book with id "+bookId+" deleted successfully", HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/books/get-all-books")
     public ResponseEntity<List<Book>> findAllBooks(){
         List<Book> bookList = bookService.findAllBooks();
-        return new ResponseEntity<>(bookList, HttpStatus.CREATED);
+        return new ResponseEntity<>(bookList, HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/books/delete-all-books")
     public ResponseEntity<String> deleteAllBooks(){
         bookService.deleteAllBooks();
-        return new ResponseEntity<>("All Books deleted successfully",HttpStatus.CREATED);
+        return new ResponseEntity<>("All Books deleted successfully",HttpStatus.ACCEPTED);
     }
     @GetMapping("/books/get-books-by-author")
-    public ResponseEntity<List<Book>> getAllBooksByAuthor(@RequestParam String author){
+    public ResponseEntity<List<Book>> getAllBooksByAuthor(@RequestParam("author") String author){
         List<Book> bookList = bookService.findBooksByAuthor(author);
-        return new ResponseEntity<>(bookList, HttpStatus.CREATED);
+        return new ResponseEntity<>(bookList, HttpStatus.ACCEPTED);
     }
     @GetMapping("/books/get-books-by-genre")
-    public ResponseEntity<List<Book>> getAllBooksByGenre(@RequestParam String genre){
+    public ResponseEntity<List<Book>> getAllBooksByGenre(@RequestParam("genre") String genre){
         List<Book> bookList = bookService.findBooksByGenre(genre);
-        return new ResponseEntity<>(bookList, HttpStatus.CREATED);
+        return new ResponseEntity<>(bookList, HttpStatus.ACCEPTED);
 
     }
 }
