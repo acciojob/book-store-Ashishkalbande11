@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 public class BookRepository {
     HashMap<Integer, Book> bookRepo = new HashMap<>();
 
-    public BookRepository(){
-    }
+//    public BookRepository(){
+//    }
 
     public Book save(Book book){
         int bookId = bookRepo.size()+1;
