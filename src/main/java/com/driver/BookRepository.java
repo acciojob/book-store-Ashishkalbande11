@@ -11,8 +11,9 @@ public class BookRepository {
     }
 
     public Book save(Book book){
-        book.setId(bookRepo.size()+1);
-        bookRepo.put(book.getId(),book);
+        int bookId = bookRepo.size()+1;
+        book.setId(bookId);
+        bookRepo.put(bookId,book);
         return book;
     }
 
@@ -43,7 +44,7 @@ public class BookRepository {
     public List<Book> findBooksByAuthor(String author){
         List<Book> bookList = new ArrayList<>();
         for(Book book : bookRepo.values()){
-            if(author.equals(book.getAuthor())){
+            if(Objects.equals(author,book.getAuthor())){
                 bookList.add(book);
             }
         }
@@ -53,7 +54,7 @@ public class BookRepository {
     public List<Book> findBooksByGenre(String genre){
         List<Book> bookList = new ArrayList<>();
         for(Book book : bookRepo.values()){
-            if(genre.equals(book.getGenre())){
+            if(Objects.equals(genre,book.getGenre())){
                 bookList.add(book);
             }
         }
