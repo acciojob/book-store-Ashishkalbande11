@@ -10,7 +10,8 @@ public class Book {
      
      private String author;
 
-
+     public Book() {
+     }
 
      public Book(String genre, String author, String name) {
           this.genre = genre;

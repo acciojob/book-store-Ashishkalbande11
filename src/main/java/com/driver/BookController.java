@@ -44,12 +44,12 @@ public class BookController {
         return new ResponseEntity<>("success",HttpStatus.ACCEPTED);
     }
     @GetMapping("/books/get-books-by-author")
-    public ResponseEntity<List<Book>> getAllBooksByAuthor(@RequestParam("author") String author){
+    public ResponseEntity<List<Book>> getAllBooksByAuthor(@RequestParam String author){
         List<Book> bookList = bookService.findBooksByAuthor(author);
         return new ResponseEntity<>(bookList, HttpStatus.ACCEPTED);
     }
     @GetMapping("/books/get-books-by-genre")
-    public ResponseEntity<List<Book>> getAllBooksByGenre(@RequestParam("genre") String genre){
+    public ResponseEntity<List<Book>> getAllBooksByGenre(@RequestParam String genre){
         List<Book> bookList = bookService.findBooksByGenre(genre);
         return new ResponseEntity<>(bookList, HttpStatus.ACCEPTED);
 

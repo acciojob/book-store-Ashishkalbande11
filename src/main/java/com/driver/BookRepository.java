@@ -5,59 +5,63 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class BookRepository {
-    HashMap<Integer, Book> bookRepo = new HashMap<>();
-
-//    public BookRepository(){
-//    }
+    List<Book> bookList;
+    static int id = 0;
+    public BookRepository(){
+        bookList = new ArrayList<>();
+    }
 
     public Book save(Book book){
-        int bookId = bookRepo.size()+1;
-        book.setId(bookId);
-        bookRepo.put(bookId,book);
+        id++;
+        book.setId(id);
+        bookList.add(book);
         return book;
     }
 
 
     public Book findBookById(int id){
 
-        return bookRepo.get(id);
+        for(Book b : bookList){
+            if(b.getId() == id){
+                return b;
+            }
+        }
+        return null;
     }
 
     public List<Book> findAll(){
-        List<Book> bookList = new ArrayList<>();
-
-        for(Integer book : bookRepo.keySet()){
-            bookList.add(bookRepo.get(book));
-        }
         return bookList;
     }
 
     public void deleteBookById(int id){
-
-        bookRepo.remove(id);
+        for(Book b : bookList){
+            if(b.getId() == id){
+                bookList.remove(b);
+            }
+        }
     }
 
     public void deleteAll(){
-        bookRepo.clear();
+        bookList.clear();
     }
 
     public List<Book> findBooksByAuthor(String author){
-        List<Book> bookList = new ArrayList<>();
-        for(Book book : bookRepo.values()){
-            if(Objects.equals(author,book.getAuthor())){
-                bookList.add(book);
+        List<Book> books = new ArrayList<>();
+        for(Book book : bookList){
+            if(book.getAuthor().equals(author)){
+                books.add(book);
             }
         }
-        return bookList;
+        return books;
     }
 
     public List<Book> findBooksByGenre(String genre){
-        List<Book> bookList = new ArrayList<>();
-        for(Book book : bookRepo.values()){
-            if(Objects.equals(genre,book.getGenre())){
-                bookList.add(book);
+        List<Book> books= new ArrayList<>();
+        for(Book book : bookList){
+            if(book.getGenre().equals(genre)){
+                books.add(book);
             }
         }
-        return bookList;
+        return books;
     }
 }
