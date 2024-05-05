@@ -34,11 +34,13 @@ public class BookRepository {
     }
 
     public void deleteBookById(int id){
+        Book book1 = null;
         for(Book b : bookList){
             if(b.getId() == id){
-                bookList.remove(b);
+                book1 = b;
             }
         }
+        bookList.remove(book1);
     }
 
     public void deleteAll(){
