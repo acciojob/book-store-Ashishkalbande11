@@ -6,15 +6,17 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class BookRepository {
     List<Book> bookList;
-    static int id = 0;
+    int id ;
     public BookRepository(){
         bookList = new ArrayList<>();
+        this.id = 1;
     }
 
     public Book save(Book book){
-        id++;
+
         book.setId(id);
         bookList.add(book);
+        id++;
         return book;
     }
 

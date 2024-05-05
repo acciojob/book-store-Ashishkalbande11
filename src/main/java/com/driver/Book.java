@@ -13,13 +13,11 @@ public class Book {
      public Book() {
      }
 
-     public Book(String genre, String author, String name) {
+     public Book(String name, String genre, String author) {
+          this.name = name;
           this.genre = genre;
           this.author = author;
-          this.name = name;
      }
-
-
 
      public int getId() {
           return id;
